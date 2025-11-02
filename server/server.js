@@ -39,13 +39,14 @@ io.on("connection", (socket) => {
 //"https://chat-app-beta-six-64.vercel.app"
 // Middleware setup
 app.use(express.json({ limit: "4mb" }));
-app.use(cors({
-    origin: ["http://localhost:5173"],
-     methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization", "token"],
-    credentials: true,
-}));
+app.use(cors());
 
+// {
+//     origin: ["http://localhost:5173"],
+//      methods: ["GET", "POST", "PUT", "DELETE"],
+//     allowedHeaders: ["Content-Type", "Authorization", "token"],
+//     credentials: true,
+// }
 app.use("/api/status", (req, res) => res.send("Server is live"));
 app.use("/api/auth", userRouter)
 app.use("/api/messages", messageRouter)
